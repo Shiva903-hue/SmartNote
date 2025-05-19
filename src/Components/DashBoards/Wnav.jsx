@@ -12,8 +12,7 @@ export default function Wnav() {
       {/* Top Nav */}
       <nav
         id="top-nav"
-        className="flex justify-between items-center mb-7 w-full p-3 border-b-2 border-b-amber-500 bg-white relative z-20"
-      >
+        className="flex justify-between items-center mb-7 w-full p-3 border-b-2 border-b-amber-500 bg-white relative z-20" >
         <div className="flex items-center gap-2 flex-1">
           <Link to="/">
             <ArrowLeft className="w-8 h-8 cursor-pointer text-gray-500 hover:text-blue-500" />

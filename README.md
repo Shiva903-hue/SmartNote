@@ -10,9 +10,7 @@
 - 🌙 Light/Dark mode support 
 - 💾 Notes persist using local storage or backend 
 
-## 📸 Preview
 
-*(You can add a screenshot here later)*
 
 ## ⚙️ Tech Stack
 

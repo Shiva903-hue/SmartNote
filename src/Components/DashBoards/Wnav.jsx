@@ -18,7 +18,7 @@ export default function Wnav() {
           <Link to="/">
             <ArrowLeft className="w-8 h-8 cursor-pointer text-gray-500 hover:text-blue-500" />
           </Link>
-          <h1 className="text-xl font-bold text-blue-950 whitespace-nowrap">workSpace</h1>
+          <h1 className="text-3xl font-bold text-blue-950 whitespace-nowrap">workSpace</h1>
           <div className="flex-1 ml-2">
             <Search />
           </div>
@@ -49,21 +49,21 @@ export default function Wnav() {
 
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 bg-white z-50 flex flex-col items-center justify-start pt-10 px-6">
+        <div className=" h-[21rem] fixed inset-0 bg-white z-50 flex flex-col items-center justify-start pt-10 px-6 shadow-2xs bor">
           {/* Top Row: Back and Close */}
+
           <div className="flex items-center w-full justify-between mb-8">
             <Link to="/" onClick={() => setMobileMenuOpen(false)}>
-              <ArrowLeft className="w-8 h-8 text-gray-500 hover:text-blue-500" />
+              <ArrowLeft className="w-10 h-10  text-gray-500 hover:text-blue-500" />
             </Link>
+       {/* Title  */}
+          <h1 className="text-3xl font-bold text-blue-950 mb-4">WorkSpace</h1>
             <button onClick={() => setMobileMenuOpen(false)} aria-label="Close menu">
-              <X className="w-8 h-8 text-gray-500 hover:text-blue-500" />
+              <X className="w-10 h-10 text-gray-500 hover:text-blue-500" />
             </button>
+   
           </div>
-          {/* Title and Search */}
-          <h1 className="text-2xl font-bold text-blue-950 mb-4">workSpace</h1>
-          <div className="w-full mb-8">
-            <Search />
-          </div>
+              
           {/* Menu Buttons */}
           <div className="w-full flex flex-col gap-4 mb-8">
             <button className="w-full py-3 border text-lg font-bold rounded-lg hover:bg-indigo-50">
@@ -77,8 +77,7 @@ export default function Wnav() {
               Settings
             </button>
           </div>
-          {/* Optionally, render Workspaces here */}
-          {/* <Workspaces /> */}
+         
         </div>
       )}
     </>

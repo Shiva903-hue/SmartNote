@@ -1,5 +1,5 @@
 // import React from 'react';
-import Middle from './Middle';
+import Middle from './Wnav';
 // import SideBar from './SideBar';
 import PreviewFile from '../Notes/PreviewFile';
 import Workspaces from './Workspaces';

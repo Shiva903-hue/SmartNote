@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Search from '../SmallCompo/Search';
 import Workspaces from './Workspaces';
 
-export default function Middle() {
+export default function Wnav () {
   return (
 
       <nav id='top-nav' className='flex justify-between gap-2 items-center mb-7 w-full p-3 border-b-2 border-b-amber-500' >

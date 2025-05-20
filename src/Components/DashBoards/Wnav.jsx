@@ -1,18 +1,20 @@
 import { Plus, Settings, ArrowLeft, Menu, X } from 'lucide-react';
+// import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import Search from '../SmallCompo/Search';
-// import Workspaces from './Workspaces'; // Uncomment if needed
 
-export default function Wnav() {
+export default function Wnav({setWform} ) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+   
+
 
   return (
     <>
       {/* Top Nav */}
       <nav
         id="top-nav"
-        className="flex justify-between items-center mb-7 w-full p-3 border-b-2 border-b-amber-500 bg-white relative z-20" >
+        className="flex justify-between items-center mb-7 w-full p-3 bg-blue-100 relative z-20" >
         <div className="flex items-center gap-2 flex-1">
           <Link to="/">
             <ArrowLeft className="w-8 h-8 cursor-pointer text-gray-500 hover:text-blue-500" />
@@ -29,10 +31,13 @@ export default function Wnav() {
             <Plus className="h-4 w-4" />
             New Note
           </button>
-          <button className="cursor-pointer flex items-center justify-center gap-2 bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-500 transition">
+            
+          <button onClick={()=>(setWform(true))}
+           className="cursor-pointer flex items-center justify-center gap-2 bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-500 transition">
             <Plus className="h-4 w-4" />
             New Workspace
           </button>
+   
           <Settings className="cursor-pointer text-gray-500 hover:text-blue-500" />
         </div>
 
@@ -79,6 +84,10 @@ export default function Wnav() {
          
         </div>
       )}
+
     </>
   );
+//   Wnav.propTypes = {
+//   setWform: PropTypes.func.isRequired, // ✅ validate that setWform is a required function
+// };
 }

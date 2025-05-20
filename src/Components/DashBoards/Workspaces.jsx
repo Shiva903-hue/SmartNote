@@ -1,8 +1,10 @@
 import {  FolderOpen, Notebook, Star, Tag, Watch } from 'lucide-react';
-import React from 'react';
 import { Link } from 'react-router-dom';
+import WorkspaceForm from '../../forms/WorkspaceForm';
 
-export default function Workspaces() {
+export default function Workspaces({wform ,setWform}) {
+ 
+  
 
     const workspace=[
         {
@@ -87,6 +89,8 @@ export default function Workspaces() {
                
                 </div>
        </div> ) )}
+       {wform &&<WorkspaceForm setWform={setWform} />}
+     
     </div>
   )
 }

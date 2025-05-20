@@ -1,18 +1,20 @@
-// import React from 'react';
+import {useState} from 'react';
 import Middle from './Wnav';
 // import SideBar from './SideBar';
-import PreviewFile from '../Notes/PreviewFile';
+// import PreviewFile from '../Notes/PreviewFile';
 import Workspaces from './Workspaces';
 
 
 export default function Main() {
+
+       const [wform , setWform] =useState(false);
   return (
     <section className='  ' >
     
-      <Middle/>
+     <Middle setWform={setWform} />
       <div className=" min-h-screen overflow-hidden">  
 
-      <Workspaces  />
+      <Workspaces  wform={wform}  setWform={setWform} />
      
 {/* <div className="none"> */}
 

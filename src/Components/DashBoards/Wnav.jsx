@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import Search from '../SmallCompo/Search';
 
-export default function Wnav({setWform} ) {
+export default function Wnav({setWform ,setNote} ) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
    
 
@@ -14,25 +14,26 @@ export default function Wnav({setWform} ) {
       {/* Top Nav */}
       <nav
         id="top-nav"
-        className="flex justify-between items-center mb-7 w-full p-3 bg-blue-100 relative z-20" >
+        className="flex justify-between items-center mb-7 w-full p-3 bg-indigo-100 relative z-20" >
         <div className="flex items-center gap-2 flex-1">
           <Link to="/">
             <ArrowLeft className="w-8 h-8 cursor-pointer text-gray-500 hover:text-blue-500" />
           </Link>
           <h1 className="text-3xl font-bold text-blue-950 whitespace-nowrap">workSpace</h1>
-          <div className="flex-1 ml-2">
+          <div className="flex-1 ml-2 hidden sm:flex">
             <Search />
           </div>
         </div>
 
         {/* Desktop Menu */}
         <div className="hidden sm:flex gap-2 items-center">
-          <button className="cursor-pointer flex items-center justify-center gap-2 bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-500 transition">
+          <button  onClick={()=>( setNote(true))} 
+          className="cursor-pointer flex items-center justify-center gap-2  bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-500 transition">
             <Plus className="h-4 w-4" />
             New Note
           </button>
             
-          <button onClick={()=>(setWform(true))}
+          <button onClick={()=>(setWform(true) ) }
            className="cursor-pointer flex items-center justify-center gap-2 bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-500 transition">
             <Plus className="h-4 w-4" />
             New Workspace
@@ -53,7 +54,7 @@ export default function Wnav({setWform} ) {
 
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div className=" h-[21rem] fixed inset-0 bg-white z-50 flex flex-col items-center justify-start pt-10 px-6 shadow-2xs bor">
+        <div className=" h-[21rem] fixed inset-0 bg-indigo-50 z-50 flex flex-col items-center justify-start pt-10 px-6 shadow-2xs bor">
           {/* Top Row: Back and Close */}
 
           <div className="flex items-center w-full justify-between mb-8">
@@ -70,13 +71,13 @@ export default function Wnav({setWform} ) {
               
           {/* Menu Buttons */}
           <div className="w-full flex flex-col gap-4 mb-8">
-            <button className="w-full py-3 border text-lg font-bold rounded-lg hover:bg-indigo-50">
+            <button className="w-full py-3 border text-lg font-bold rounded-lg hover:bg-indigo-500 bg-indigo-600 text-white cursor-pointer">
               New Note
             </button>
-            <button className="w-full py-3 border text-lg font-bold rounded-lg hover:bg-indigo-50">
+            <button className="w-full py-3 border text-lg font-bold rounded-lg hover:bg-indigo-500 bg-indigo-600 text-white cursor-pointer">
               New Workspace
             </button>
-            <button className="w-full py-3 border text-lg font-bold rounded-lg hover:bg-indigo-50 flex items-center justify-center gap-2">
+            <button className="w-full py-3 border text-lg font-bold rounded-lg hover:bg-indigo-500 flex items-center justify-center gap-2 bg-indigo-600  text-white cursor-pointer">
               <Settings className="w-6 h-6" />
               Settings
             </button>

@@ -1,5 +1,5 @@
 import {  FolderOpen, Notebook, Star, Tag, Watch } from 'lucide-react';
-import PropTypes from 'propType'
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import WorkspaceForm from '../../forms/WorkspaceForm';
 import NoteForm from '../../forms/NoteForm';
@@ -103,6 +103,4 @@ Workspaces.propTypes={
     wform: PropTypes.func.isRequired,
     setNote: PropTypes.func.isRequired,
     note: PropTypes.func.isRequired
-
-
 }

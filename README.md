@@ -1,6 +1,6 @@
 # 🧠 Smart Note Manager
-          (Working) 
-**Smart Note Manager** is a sleek and modern note-taking web app built using **ReactJS**. It allows users to create, manage, and search notes efficiently — like a personal digital notebook. 📒✨
+**Not Complete**
+**Smart Note Manager** is a sleek, modern note-taking web app built using **ReactJS**. It allows users to create, manage, and search notes efficiently, like a personal digital notebook. 📒✨
 
 ## 🌟 Features I want to implement
 

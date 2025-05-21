@@ -1,5 +1,5 @@
 import { Plus, Settings, ArrowLeft, Menu, X } from 'lucide-react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import Search from '../SmallCompo/Search';
@@ -88,7 +88,9 @@ export default function Wnav({setWform ,setNote} ) {
 
     </>
   );
-//   Wnav.propTypes = {
-//   setWform: PropTypes.func.isRequired, // ✅ validate that setWform is a required function
-// };
+
 }
+  Wnav.propTypes = {
+  setWform: PropTypes.func.isRequired, // ✅ validate that setWform is a required function
+  setNote: PropTypes.func.isRequired, // ✅ validate that setNote is a required function
+};

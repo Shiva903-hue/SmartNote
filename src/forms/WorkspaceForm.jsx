@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from 'prop-types';
 
 export default function WorkspaceForm({setWform}) {
   const [name, setName] = useState("");
@@ -66,4 +67,9 @@ export default function WorkspaceForm({setWform}) {
     </form>
     </div>
   );
+
+}
+
+WorkspaceForm.propTypes = {
+  setWform: PropTypes.func.isRequired
 }

@@ -1,4 +1,5 @@
 import {  FolderOpen, Notebook, Star, Tag, Watch } from 'lucide-react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import WorkspaceForm from '../../forms/WorkspaceForm';
@@ -6,9 +7,8 @@ import NoteForm from '../../forms/NoteForm';
 
 export default function Workspaces({wform ,setWform , setNote , note}) {
  
-  
 
-    const workspace=[
+    const [workspace ,setWorkspace]=useState([
         {
             title: 'Workspace',
             createTime:"1 day ago",
@@ -63,7 +63,19 @@ export default function Workspaces({wform ,setWform , setNote , note}) {
             tags:["Persnol", "ideas"],
             quantity: 12
         },
-    ]
+    ])
+
+  // Updated to accept title and tags
+  const handleCreate = (title, tags) => {
+    if (!title.trim()) return;
+    const newWorkspace = {
+      title,
+      createTime: "just now",
+tags: Array.isArray(tags) ? tags : [tags], 
+      quantity: 0,
+    };
+    setWorkspace([newWorkspace, ...workspace]);
+  };
   return (
     <div className=' w-full  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-5'>
       {workspace.map((notes,index)=>(  
@@ -92,7 +104,7 @@ export default function Workspaces({wform ,setWform , setNote , note}) {
                
                 </div>
        </div> ) )}
-       {wform &&<WorkspaceForm setWform={setWform} />}
+       {wform &&<WorkspaceForm setWform={setWform}  handleCreate={handleCreate}  />}
        {note && <NoteForm setNote={setNote}/>}
      
     </div>

@@ -1,4 +1,5 @@
-import { useState } from "react";       
+import { useState } from "react"; 
+import PropTypes from 'prop-types';   
 
 
 export default function NoteForm({setNote}) {
@@ -18,7 +19,7 @@ export default function NoteForm({setNote}) {
               // setTags("");
             }
   return (
-    <div className=" flex justify-center items-center w-screen h-screen relative top-[-50rem] bg-[#00000021]">
+     <div className="fixed inset-0 z-50 flex justify-center items-center bg-[#00000021]">
     <form
       onSubmit={handleSubmit}
       className="w-full   max-w-md mx-auto bg-white rounded-lg shadow p-6 flex flex-col gap-4"
@@ -65,4 +66,9 @@ Location        </label>
     </form>
     </div>
   )
+}
+
+NoteForm.propTypes = {
+  setNote: PropTypes.func.isRequired,
+
 }

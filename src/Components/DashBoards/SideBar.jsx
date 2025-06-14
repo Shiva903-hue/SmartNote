@@ -15,79 +15,79 @@ export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div classNameName="flex">
+    <div className="flex">
       {/* Burger Menu Button (Visible on Mobile & Tablet) */}
       <button
         onClick={() => setIsOpen(true)}
-        classNameName="md:hidden fixed top-4 left-4 z-50 bg-indigo-600 text-white p-2 rounded-lg shadow-lg"
+        className="md:hidden fixed top-4 left-4 z-50 bg-indigo-600 text-white p-2 rounded-lg shadow-lg"
       >
-        <Menu classNameName="h-6 w-6" />
+        <Menu className="h-6 w-6" />
       </button>
 
       {/* Sidebar */}
       <div
-        classNameName={`fixed top-0 left-0 min-h-screen w-64 bg-white border-r border-gray-400 shadow-xl p-6 flex flex-col gap-6 transform transition-transform duration-300 ${
+        className={`fixed top-0 left-0 min-h-screen w-64 bg-white border-r border-gray-400 shadow-xl p-6 flex flex-col gap-6 transform transition-transform duration-300 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         } md:translate-x-0 md:relative`}
       >
         {/* Close Button (Only for Mobile & Tablet) */}
         <button
           onClick={() => setIsOpen(false)}
-          classNameName="md:hidden absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+          className="md:hidden absolute top-4 right-4 text-gray-500 hover:text-gray-700"
         >
-          <X classNameName="h-6 w-6" />
+          <X className="h-6 w-6" />
         </button>
 
         {/* Logo & Title */}
-        <div classNameName="flex items-center gap-2 text-xl font-semibold text-indigo-600">
-          <FileText classNameName="text-indigo-600" />
+        <div className="flex items-center gap-2 text-xl font-semibold text-indigo-600">
+          <FileText className="text-indigo-600" />
           <span>SmartNotes</span>
         </div>
 
         {/* New Note Button */}
-        <button classNameName="w-full flex items-center justify-center gap-2 bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-500 transition">
-          <Plus classNameName="h-4 w-4" />
+        <button className="w-full flex items-center justify-center gap-2 bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-500 transition">
+          <Plus className="h-4 w-4" />
           New Note
         </button>
-        <button classNameName="w-full flex items-center justify-center gap-2 bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-500 transition">
+        <button className="w-full flex items-center justify-center gap-2 bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-500 transition">
           <Link to="/" onClick={() => setIsOpen(false)}>
-            <ArrowUpNarrowWide classNameName="h-4 w-4" />
+            <ArrowUpNarrowWide className="h-4 w-4" />
             Back to homepage
           </Link>
         </button>
 
         {/* Navigation Links (Auto-Close on Mobile) */}
-        <nav classNameName="space-y-2 flex-1">
+        <nav className="space-y-2 flex-1">
           <a
             href="#"
-            classNameName="flex items-center gap-3 px-4 py-2 text-sm rounded-lg bg-indigo-100 text-indigo-700 font-medium"
+            className="flex items-center gap-3 px-4 py-2 text-sm rounded-lg bg-indigo-100 text-indigo-700 font-medium"
             onClick={() => setIsOpen(false)}
           >
-            <LayoutDashboard classNameName="h-5 w-5 text-indigo-700" />
+            <LayoutDashboard className="h-5 w-5 text-indigo-700" />
             Dashboard
           </a>
           <a
             href="#"
-            classNameName="flex items-center gap-3 px-4 py-2 text-sm rounded-lg text-gray-700 hover:bg-indigo-100 hover:text-indigo-700 transition"
+            className="flex items-center gap-3 px-4 py-2 text-sm rounded-lg text-gray-700 hover:bg-indigo-100 hover:text-indigo-700 transition"
             onClick={() => setIsOpen(false)}
           >
-            <FileText classNameName="h-5 w-5" />
+            <FileText className="h-5 w-5" />
             Notes
           </a>
           <a
             href="#"
-            classNameName="flex items-center gap-3 px-4 py-2 text-sm rounded-lg text-gray-700 hover:bg-indigo-100 hover:text-indigo-700 transition"
+            className="flex items-center gap-3 px-4 py-2 text-sm rounded-lg text-gray-700 hover:bg-indigo-100 hover:text-indigo-700 transition"
             onClick={() => setIsOpen(false)}
           >
-            <HelpCircle classNameName="h-5 w-5" />
+            <HelpCircle className="h-5 w-5" />
             How It Works
           </a>
           <a
             href="#"
-            classNameName="flex items-center gap-3 px-4 py-2 text-sm rounded-lg text-gray-700 hover:bg-indigo-100 hover:text-indigo-700 transition"
+            className="flex items-center gap-3 px-4 py-2 text-sm rounded-lg text-gray-700 hover:bg-indigo-100 hover:text-indigo-700 transition"
             onClick={() => setIsOpen(false)}
           >
-            <Settings classNameName="h-5 w-5" />
+            <Settings className="h-5 w-5" />
             Settings
           </a>
         </nav>

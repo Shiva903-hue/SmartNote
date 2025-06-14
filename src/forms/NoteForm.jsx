@@ -1,74 +1,82 @@
-import { useState } from "react"; 
-import PropTypes from 'prop-types';   
+import { useState } from "react";
+import PropTypes from "prop-types";
 
+export default function NoteForm({ setNote }) {
+  const [name, setName] = useState('');
+  const [workSpaceName , setWorSpaceName] = useState('');
 
-export default function NoteForm({setNote}) {
-          const [name, setName] = useState("");
-            const [tags, setTags] = useState("");
-          
-            function handleSubmit(e) {
-              e.preventDefault();
-              setNote(false)
-              // if (onSubmit) {
-              //   onSubmit({
-              //     name,
-              //     tags: tags.split(",").map(t => t.trim()).filter(Boolean),
-              //   });
-              // }
-              // setName("");
-              // setTags("");
-            }
+  function handleSubmit(e) {
+    e.preventDefault();
+    setNote(false);
+    // if (onSubmit) {
+    //   onSubmit({
+    //     name,
+    //     tags: tags.split(",").map(t => t.trim()).filter(Boolean),
+    //   });
+    // }
+    // setName("");
+    // setTags("");
+  }
   return (
-     <div className="fixed inset-0 z-50 flex justify-center items-center bg-[#00000021]">
-    <form
-      onSubmit={handleSubmit}
-      className="w-full   max-w-md mx-auto bg-white rounded-lg shadow p-6 flex flex-col gap-4"
-    >
-      <h1 className="text-4xl text-indigo-950 text-center font-bold underline m-1.5">Create Note</h1>
-      <div>
-        <label className="block text-gray-700 font-bold mb-2" htmlFor="ws-name">
-          Note Name
-        </label>
-        <input
-          id="ws-name"
-          type="text"
-          value={name}
-          onChange={e => setName(e.target.value)}
-          required
-          className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
-          placeholder="Enter Note name"
-        />
-      </div>
-      <div>
-        <label className="block text-gray-700 font-bold mb-2" htmlFor="ws-tags">
-Location        </label>
-        <input
-          id="ws-tags"
-          type="text"
-          value={tags}
-          onChange={e => setTags(e.target.value)}
-          className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
-          placeholder="WorkSpace Name"
-        />
-      </div>
-      <button
-        type="submit"
-        className="w-full bg-indigo-600 text-white font-bold py-2 rounded-lg hover:bg-indigo-500 transition cursor-pointer"
+    <div className="fixed inset-0 z-50 flex justify-center items-center bg-[#00000021]">
+      <form
+        onSubmit={handleSubmit}
+        className="w-full   max-w-md mx-auto bg-white rounded-lg shadow p-6 flex flex-col gap-4"
       >
-        Create Note
-      </button>
-      <button
-        type="button"  onClick={()=>(setNote(false))}
-        className="w-full bg-red-500 text-white font-bold py-2 rounded-lg hover:bg-red-600 transition cursor-pointer"
-      >
-       Close
-      </button>
-    </form>
+        <h1 className="text-4xl text-indigo-950 text-center font-bold underline m-1.5">
+          Create Note
+        </h1>
+        <div>
+          <label
+            className="block text-gray-700 font-bold mb-2"
+            htmlFor="ws-name"
+          >
+            Note Name
+          </label>
+          <input
+            id="ws-name"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            placeholder="Enter Note name"
+          />
+        </div>
+        <div>
+          <label
+            className="block text-gray-700 font-bold mb-2"
+            htmlFor="ws-tags"
+          >
+            Location
+          </label>
+          <input
+            id="ws-tags"
+            type="text"
+            value={workSpaceName}
+            onChange={(e) => setWorSpaceName(e.target.value)}
+            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
+            placeholder="WorkSpace Name"
+          />
+        </div>
+        <button
+          type="submit"
+          className="w-full bg-indigo-600 text-white font-bold py-2 rounded-lg hover:bg-indigo-500 transition cursor-pointer"
+        >
+          Create Note
+        </button>
+        <button
+          type="button"
+          onClick={() => setNote(false)}
+          className="w-full bg-red-500 text-white font-bold py-2 rounded-lg hover:bg-red-600 transition cursor-pointer"
+        >
+          Close
+        </button>
+      </form>
     </div>
-  )
+  );
 }
 
 NoteForm.propTypes = {
   setNote: PropTypes.func.isRequired,
-
-}
+};

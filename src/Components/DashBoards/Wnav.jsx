@@ -1,13 +1,13 @@
-import { Plus, Settings, ArrowLeft, Menu, X } from 'lucide-react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import Search from '../SmallCompo/Search';
+import { Plus, Settings, ArrowLeft, Menu, X } from "lucide-react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import Search from "../SmallCompo/Search";
 
-export default function Wnav({ setWform, setNote }) {
+export default function Wnav({ setWform,   showBtn , senote}) {
+  //setNote
   // State to manage the visibility of the mobile menu
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   return (
     <>
       {/* Top Navigation Bar */}
@@ -20,7 +20,9 @@ export default function Wnav({ setWform, setNote }) {
           <Link to="/">
             <ArrowLeft className="w-8 h-8 cursor-pointer text-gray-500 hover:text-blue-500" />
           </Link>
-          <h1 className="text-3xl font-bold text-blue-950 whitespace-nowrap">workSpace</h1>
+          <h1 className="text-3xl font-bold text-blue-950 whitespace-nowrap">
+            workSpace
+          </h1>
           <div className="flex-1 ml-2 hidden sm:flex">
             <Search />
           </div>
@@ -28,23 +30,21 @@ export default function Wnav({ setWform, setNote }) {
 
         {/* Desktop Menu Section */}
         <div className="hidden sm:flex gap-2 items-center">
-          {/* Button to create a new note */}
-          <button
-            onClick={() => setNote(true)}
-            className="cursor-pointer flex items-center justify-center gap-2 bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-500 transition"
-          >
-            <Plus className="h-4 w-4" />
-            New Note
-          </button>
-
-          {/* Button to create a new workspace */}
+          
           <button
             onClick={() => setWform(true)}
-            className="cursor-pointer flex items-center justify-center gap-2 bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-500 transition"
-          >
+            className="cursor-pointer flex items-center justify-center gap-2 bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-500 transition">
             <Plus className="h-4 w-4" />
             New Workspace
           </button>
+
+        {showBtn && 
+          <button
+            onClick={() => senote(true)}
+            className="cursor-pointer flex items-center justify-center gap-2 bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-500 transition">
+            <Plus className="h-4 w-4" />
+            New Note
+          </button> } 
 
           {/* Settings Icon */}
           <Settings className="cursor-pointer text-gray-500 hover:text-blue-500" />
@@ -84,23 +84,17 @@ export default function Wnav({ setWform, setNote }) {
           {/* Mobile Menu Buttons */}
           <div className="w-full flex flex-col gap-4 mb-8">
             {/* Button to create a new note */}
-            <button
-              className="w-full py-3 border text-lg font-bold rounded-lg hover:bg-indigo-500 bg-indigo-600 text-white cursor-pointer"
-            >
+            <button className="w-full py-3 border text-lg font-bold rounded-lg hover:bg-indigo-500 bg-indigo-600 text-white cursor-pointer">
               New Note
             </button>
 
             {/* Button to create a new workspace */}
-            <button
-              className="w-full py-3 border text-lg font-bold rounded-lg hover:bg-indigo-500 bg-indigo-600 text-white cursor-pointer"
-            >
+            <button className="w-full py-3 border text-lg font-bold rounded-lg hover:bg-indigo-500 bg-indigo-600 text-white cursor-pointer">
               New Workspace
             </button>
 
             {/* Settings Button */}
-            <button
-              className="w-full py-3 border text-lg font-bold rounded-lg hover:bg-indigo-500 flex items-center justify-center gap-2 bg-indigo-600 text-white cursor-pointer"
-            >
+            <button className="w-full py-3 border text-lg font-bold rounded-lg hover:bg-indigo-500 flex items-center justify-center gap-2 bg-indigo-600 text-white cursor-pointer">
               <Settings className="w-6 h-6" />
               Settings
             </button>
@@ -114,5 +108,7 @@ export default function Wnav({ setWform, setNote }) {
 // PropTypes validation to ensure the correct props are passed
 Wnav.propTypes = {
   setWform: PropTypes.func.isRequired, // Validate that the setWform prop is a required function
-  setNote: PropTypes.func.isRequired, // Validate that the setNote prop is a required function
+  senote: PropTypes.func.isRequired, // Validate that the setNote prop is a required function
+  buttonName: PropTypes.func.isRequired, // Validate that the setNote prop is a required function
+  showBtn: PropTypes.func.isRequired, // Validate that the setNote prop is a required function
 };

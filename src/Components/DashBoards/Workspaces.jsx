@@ -1,27 +1,69 @@
-import { FolderOpen, Notebook, Star, Tag, Watch } from 'lucide-react';
-import { useState } from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import WorkspaceForm from '../../forms/WorkspaceForm';
-import NoteForm from '../../forms/NoteForm';
+import { FolderOpen, Notebook, Star, Tag, Watch } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import PropTypes from "prop-types";
+// import { Link } from "react-router-dom";
+import WorkspaceForm from "../../forms/WorkspaceForm";
 
-export default function Workspaces({ wform, setWform, setNote, note }) {
+export default function Workspaces({ wform, setWform }) {
+  //setNote, note
   // State to manage the list of workspaces
   const [workspace, setWorkspace] = useState([
     {
-      title: 'Workspace',
+      title: "Workspace",
       createTime: "1 day ago",
       tags: ["Personal", "ideas"],
     },
     {
-      title: 'Workspace',
+      title: "Workspace",
       createTime: "1 day ago",
       tags: ["Personal", "ideas", "map"],
       quantity: 12,
     },
-    // Additional workspace objects here
+    {
+      title: "Workspace",
+      createTime: "1 day ago",
+      tags: ["Persnol", "ideas"],
+      quantity: 12,
+    },
+    {
+      title: "Workspace",
+      createTime: "1 day ago",
+      tags: ["Persnol", "ideas"],
+      quantity: 12,
+    },
+    {
+      title: "Workspace",
+      createTime: "1 day ago",
+      tags: ["Persnol", "ideas"],
+      quantity: 12,
+    },
+    {
+      title: "Workspace",
+      createTime: "1 day ago",
+      tags: ["Persnol", "ideas"],
+      quantity: 12,
+    },
+    {
+      title: "Workspace",
+      createTime: "1 day ago",
+      tags: ["Persnol", "ideas"],
+      quantity: 12,
+    },
+    {
+      title: "Workspace",
+      createTime: "1 day ago",
+      tags: ["Persnol", "ideas"],
+      quantity: 12,
+    },
+    {
+      title: "Workspace",
+      createTime: "1 day ago",
+      tags: ["Persnol", "ideas"],
+      quantity: 12,
+    },
   ]);
-
+  const navigate = useNavigate();
   // Function to handle the creation of a new workspace
   // Accepts `title` and `tags` as parameters
   const handleCreate = (title, tags) => {
@@ -36,10 +78,13 @@ export default function Workspaces({ wform, setWform, setNote, note }) {
   };
 
   return (
-    <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-5">
+    <section className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-5">
       {/* Render each workspace */}
       {workspace.map((notes, index) => (
-        <div key={index} className="border rounded-2xl border-indigo-300 p-3.5 m-2 bg-white">
+        <div
+          key={index}
+          className="border rounded-2xl border-indigo-300 p-3.5 m-2 bg-white"
+        >
           {/* Workspace Header */}
           <div className="flex items-center justify-between m-5">
             <h1 className="font-semibold text">{notes.title}</h1>
@@ -60,7 +105,10 @@ export default function Workspaces({ wform, setWform, setNote, note }) {
                 <Tag className="w-4 h-4" />
                 {notes.tags && notes.tags.length > 0 ? (
                   notes.tags.map((tag, tagIndex) => (
-                    <span key={tagIndex} className="bg-purple-100 text-indigo-500 rounded-2xl p-1">
+                    <span
+                      key={tagIndex}
+                      className="bg-purple-100 text-indigo-500 rounded-2xl p-1"
+                    >
                       {tag}
                     </span>
                   ))
@@ -77,24 +125,27 @@ export default function Workspaces({ wform, setWform, setNote, note }) {
             </div>
 
             {/* Open Workspace Button */}
-            <Link to="/preview">
               <button
+                onClick={() => {
+                  // local state (just in case you're still on the page)
+                  navigate("/preview", { state: { showBtn: true } }); // pass state
+                }}
                 title="Open"
-                className="cursor-pointer bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-500 transition"
-              >
-                <FolderOpen />
+                className="cursor-pointer bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-500 transition">
+                  <FolderOpen />
               </button>
-            </Link>
           </div>
         </div>
       ))}
 
       {/* Show the Workspace Form if `wform` is true */}
-      {wform && <WorkspaceForm setWform={setWform} handleCreate={handleCreate} />}
+      {wform && (
+        <WorkspaceForm setWform={setWform} handleCreate={handleCreate} />
+      )}
 
       {/* Show the Note Form if `note` is true */}
-      {note && <NoteForm setNote={setNote} />}
-    </div>
+      {/* {note && <NoteForm setNote={setNote} />} */}
+    </section>
   );
 }
 

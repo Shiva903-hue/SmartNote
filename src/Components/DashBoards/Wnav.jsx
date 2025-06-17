@@ -4,111 +4,146 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import Search from "../SmallCompo/Search";
 
-export default function Wnav({ setWform,   showBtn , senote}) {
-  //setNote
-  // State to manage the visibility of the mobile menu
+export default function Wnav({ setWform, showBtn, senote }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  
   return (
     <>
-      {/* Top Navigation Bar */}
-      <nav
-        id="top-nav"
-        className="flex justify-between items-center mb-7 w-full p-3 bg-indigo-100 relative z-20"
-      >
-        {/* Left Section: Back Button, Title, and Search */}
-        <div className="flex items-center gap-2 flex-1">
-          <Link to="/">
-            <ArrowLeft className="w-8 h-8 cursor-pointer text-gray-500 hover:text-blue-500" />
-          </Link>
-          <h1 className="text-3xl font-bold text-blue-950 whitespace-nowrap">
-            workSpace
-          </h1>
-          <div className="flex-1 ml-2 hidden sm:flex">
-            <Search />
+      {/* Main Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-lg bg-white/90 border-b border-slate-200/60 shadow-sm">
+        <div className="max-w-[1920px] mx-auto"> 
+          <div className="flex items-center justify-between h-20 px-6 sm:px-8">
+            {/* Left Section */}
+            <div className="flex items-center space-x-6 flex-1"> 
+              <Link 
+                to="/"
+                className="p-2.5 rounded-full hover:bg-slate-100 transition-colors"
+              >
+                <ArrowLeft className="w-7 h-7 text-slate-600" /> 
+              </Link>
+              
+              <h1 className="text-3xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-700 to-indigo-900">
+                workspace
+              </h1>
+              
+              {/* Search Bar */}
+              <div className="hidden sm:block flex-1 max-w-2xl ml-6">
+                <Search />
+              </div>
+            </div>
+
+            {/* Desktop Actions */}
+            <div className="hidden sm:flex items-center space-x-4">
+              <button
+                onClick={() => setWform(true)}
+                className="flex items-center px-6 h-11 text-base font-medium text-white bg-indigo-600 rounded-xl hover:bg-indigo-700 transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer"
+              >
+                <Plus className="w-5 h-5 mr-2" />
+                New Workspace
+              </button>
+
+              {showBtn && (
+                <button
+                  onClick={() => senote(true)}
+                  className="flex items-center px-6 h-11 text-base font-medium text-white bg-indigo-600 rounded-xl hover:bg-indigo-700 transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer"
+                >
+                  <Plus className="w-5 h-5 mr-2" />
+                  New Note
+                </button>
+              )}
+
+              <button
+                className="p-3 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition-colors curp"
+                aria-label="Settings"
+              >
+                <Settings className="w-6 h-6" /> {/* Increased icon size */}
+              </button>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              className="sm:hidden p-3 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition-colors"
+              onClick={() => setMobileMenuOpen(true)}
+              aria-label="Open menu"
+            >
+              <Menu className="w-6 h-6" />
+            </button>
           </div>
         </div>
-
-        {/* Desktop Menu Section */}
-        <div className="hidden sm:flex gap-2 items-center">
-          
-          <button
-            onClick={() => setWform(true)}
-            className="cursor-pointer flex items-center justify-center gap-2 bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-500 transition">
-            <Plus className="h-4 w-4" />
-            New Workspace
-          </button>
-
-        {showBtn && 
-          <button
-            onClick={() => senote(true)}
-            className="cursor-pointer flex items-center justify-center gap-2 bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-500 transition">
-            <Plus className="h-4 w-4" />
-            New Note
-          </button> } 
-
-          {/* Settings Icon */}
-          <Settings className="cursor-pointer text-gray-500 hover:text-blue-500" />
-        </div>
-
-        {/* Mobile Hamburger Menu Button */}
-        <button
-          className="sm:hidden ml-2"
-          onClick={() => setMobileMenuOpen(true)}
-          aria-label="Open menu"
-        >
-          <Menu className="w-8 h-8 text-gray-500 hover:text-blue-500" />
-        </button>
       </nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="h-[21rem] fixed inset-0 bg-indigo-50 z-50 flex flex-col items-center justify-start pt-10 px-6 shadow-2xs">
-          {/* Top Row: Back and Close Buttons */}
-          <div className="flex items-center w-full justify-between mb-8">
-            <Link to="/" onClick={() => setMobileMenuOpen(false)}>
-              <ArrowLeft className="w-10 h-10 text-gray-500 hover:text-blue-500" />
-            </Link>
+        <div className="fixed inset-0 z-50">
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 bg-slate-900/20 backdrop-blur-sm"
+            onClick={() => setMobileMenuOpen(false)}
+          />
 
-            {/* Mobile Menu Title */}
-            <h1 className="text-3xl font-bold text-blue-950 mb-4">WorkSpace</h1>
+          {/* Menu Panel */}
+          <div className="absolute inset-y-0 right-0 w-full max-w-sm bg-white shadow-2xl">
+            <div className="flex flex-col h-full">
+              {/* Header */}
+              <div className="flex items-center justify-between px-6 h-20 border-b border-slate-200">
+                <h2 className="text-2xl font-bold text-slate-900">Menu</h2>
+                <button
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="p-2.5 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition-colors cursor-pointer"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
 
-            {/* Close Button */}
-            <button
-              onClick={() => setMobileMenuOpen(false)}
-              aria-label="Close menu"
-            >
-              <X className="w-10 h-10 text-gray-500 hover:text-blue-500" />
-            </button>
-          </div>
+              {/* Search */}
+              <div className="p-6 border-b border-slate-200">
+                <Search />
+              </div>
 
-          {/* Mobile Menu Buttons */}
-          <div className="w-full flex flex-col gap-4 mb-8">
-            {/* Button to create a new note */}
-            <button className="w-full py-3 border text-lg font-bold rounded-lg hover:bg-indigo-500 bg-indigo-600 text-white cursor-pointer">
-              New Note
-            </button>
+              {/* Actions */}
+              <div className="p-6 space-y-4">
+                <button
+                  onClick={() => {
+                    setWform(true);
+                    setMobileMenuOpen(false);
+                  }}
+                  className="flex items-center justify-center w-full px-6 h-12 text-base font-medium text-white bg-indigo-600 rounded-xl hover:bg-indigo-700 transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer"
+                >
+                  <Plus className="w-5 h-5 mr-2" />
+                  New Workspace
+                </button>
 
-            {/* Button to create a new workspace */}
-            <button className="w-full py-3 border text-lg font-bold rounded-lg hover:bg-indigo-500 bg-indigo-600 text-white cursor-pointer">
-              New Workspace
-            </button>
+                {showBtn && (
+                  <button
+                    onClick={() => {
+                      senote(true);
+                      setMobileMenuOpen(false);
+                    }}
+                    className="flex items-center justify-center w-full px-6 h-12 text-base font-medium text-white bg-indigo-600 rounded-xl hover:bg-indigo-700 transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer"
+                  >
+                    <Plus className="w-5 h-5 mr-2" />
+                    New Note
+                  </button>
+                )}
 
-            {/* Settings Button */}
-            <button className="w-full py-3 border text-lg font-bold rounded-lg hover:bg-indigo-500 flex items-center justify-center gap-2 bg-indigo-600 text-white cursor-pointer">
-              <Settings className="w-6 h-6" />
-              Settings
-            </button>
+                <button className="flex items-center justify-center w-full px-6 h-12 text-base font-medium text-slate-700 bg-slate-100 rounded-xl hover:bg-slate-200 transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer">
+                  <Settings className="w-5 h-5 mr-2" />
+                  Settings
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       )}
+
+      {/* Spacer for fixed nav */}
+      <div className="h-20" />
     </>
   );
 }
 
-// PropTypes validation to ensure the correct props are passed
 Wnav.propTypes = {
-  setWform: PropTypes.func.isRequired, // Validate that the setWform prop is a required function
-  senote: PropTypes.func.isRequired, // Validate that the setNote prop is a required function
-  buttonName: PropTypes.func.isRequired, // Validate that the setNote prop is a required function
-  showBtn: PropTypes.func.isRequired, // Validate that the setNote prop is a required function
+  setWform: PropTypes.func.isRequired,
+  senote: PropTypes.func.isRequired,
+  showBtn: PropTypes.bool.isRequired,
 };

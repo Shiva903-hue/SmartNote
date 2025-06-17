@@ -12,7 +12,7 @@ import {Notebook,
 } from "lucide-react";
 import { useRef, useState } from "react";
 
-export default function TextEditor() {
+export default function TempNote() {
   const editorRef = useRef(null);
   const [content, setContent] = useState("");
 // 
